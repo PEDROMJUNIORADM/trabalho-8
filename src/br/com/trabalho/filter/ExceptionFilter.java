@@ -1,4 +1,4 @@
-package br.com.cursoweb.filter;
+package br.com.trabalho.filter;
 
 import java.io.IOException;
 

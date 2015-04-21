@@ -1,4 +1,4 @@
-package br.com.cursoweb.servlet;
+package br.com.trabalho.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,8 +14,7 @@ public class SessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 6802030530738727745L;
 
 	@Override
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -30,7 +29,7 @@ public class SessionServlet extends HttpServlet {
 			request.getSession().invalidate();
 			out.println("Session invalidada!");
 		} else {
-			out.println("Session não invalidada!");
+			out.println("Session nao invalidada!");
 		}
 		out.println("<hr/><a href=\"/cursoweb/\">Voltar</a>");
 		out.println("</body>");

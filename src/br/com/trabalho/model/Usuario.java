@@ -1,4 +1,4 @@
-package br.com.cursoweb.model;
+package br.com.trabalho.model;
 
 public class Usuario {
 
