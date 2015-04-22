@@ -1,12 +1,17 @@
 package br.com.trabalho.model;
 
 public class Usuario {
-
+	
+	private int id;
+	
 	private String nome;
 	
 	private String email;
 
 	private String sexo;
+	
+	private String cep;
+	
 	
 	public Usuario() {
 		super();
@@ -51,5 +56,25 @@ public class Usuario {
 
 	public void setSexo(String sexo) {
 		this.sexo = sexo;
+	}
+
+
+	public String getCep() {
+		return cep;
+	}
+
+
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
