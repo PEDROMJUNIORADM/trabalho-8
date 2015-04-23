@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,17 +17,23 @@
 
     <div class="container">
     
-      <h1>Contadores de acessos</h1>
+      <h1>Contadores de acesso</h1>
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron" style="margin-top: 10px">
-        <h1><%= application.getAttribute("countXHTMLRequest") %></h1>
-        <p>acesso(s) a páginas ".xhtml". Clique <a href="/trabalho/teste.xhtml">aqui</a> para acessar a página de teste.xhtml</p>
-        
-        
+        <h1><%= application.getAttribute("countXHTMLRequest") %> <small>acesso(s) a páginas ".xhtml".</small></h1>
+        <p>Clique <a href="/trabalho/teste.xhtml">aqui</a> para acessar a página de teste.xhtml</p>
       </div>
       
-      <p>
+      <h3>Lista de acessos:</h3>
+ 
+      <ul>
+      	<c:forEach items='${mapXHTMLCounters}' var="entry">
+      		<li><b>${entry.key}:</b> ${entry.value} acesso(s).</li>
+		</c:forEach>
+      </ul>
+      
+      <p style="margin-top: 30px;">
         <a class="btn btn-lg btn-primary" href="/trabalho" role="button">Voltar para página inicial</a>
       </p>
 
