@@ -1,0 +1,49 @@
+package br.com.trabalho.business;
+
+import java.util.List;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.RequestScoped;
+
+import br.com.trabalho.dao.UsuarioDao;
+import br.com.trabalho.model.Usuario;
+
+@ApplicationScoped
+@ManagedBean(name = "usuarioBusiness")
+
+public class UsuarioBusiness {
+	
+	@ManagedProperty("#{usuarioDao}")
+	private UsuarioDao usuarioDao;
+
+	public void setUsuarioDao(UsuarioDao usuarioDao) {
+		this.usuarioDao = usuarioDao;
+	}
+	
+	public Usuario autenticarUsuario(String cpf, String senha)
+			throws UsuarioInvalidoException {
+		Usuario usuario = usuarioDao.consultarUsuarioCPF(cpf);
+		if (usuario == null || !usuario.getSenha().equals(senha)) {
+			throw new UsuarioInvalidoException();
+		}
+		return usuario;
+	}
+
+	public void incluirUsuario(Usuario usuario) {
+		usuarioDao.salvarUsuario(usuario);
+	}
+
+	public void excluirUsuario(Usuario usuario) {
+		usuarioDao.excluirUsuario(usuario);
+	}
+
+	public Usuario consultarUsuario(String cpf) {
+		return usuarioDao.consultarUsuarioCPF(cpf);
+	}
+
+	public List<Usuario> listarUsuarios() {
+		return usuarioDao.listarUsuarios();
+	}
+}
