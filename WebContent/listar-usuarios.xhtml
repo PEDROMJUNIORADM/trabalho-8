@@ -60,31 +60,31 @@ body {
 </style>
 <h:body>
 	<h:form class="form-signin">
-		<h:dataTable value="#{usuarioBean.listaUsuarios}" var="usuario"
-			border="1" cellspacing="0" cellpadding="2">>
+		<h:dataTable class="form-signin" value="#{usuarioBean.listaUsuarios}"
+			var="usuario" border="1" cellspacing="1" cellpadding="2" width="650	px">>
 			
-			<h:column>
-				<f:facet name="header">
+			<h:column class="form-control">
+				<f:facet name="header" class="form-control">
 					<h:outputText value="#{msg['page.usuarios.label.cpf']}" />
 				</f:facet>
 				<h:outputText value="#{usuario.cpf}" />
 			</h:column>
 
-			<h:column>
+			<h:column class="form-control">
 				<f:facet name="header">
 					<h:outputText value="#{msg['page.usuarios.label.nomeReduzido']}" />
 				</f:facet>
 				<h:outputText value="#{usuario.nomeReduzido}" />
 			</h:column>
 
-			<h:column>
+			<h:column class="form-control">
 				<f:facet name="header">
 					<h:outputText value="#{msg['page.usuarios.label.email']}" />
 				</f:facet>
 				<h:outputText value="#{usuario.email}" />
 			</h:column>
 
-			<h:column>
+			<h:column class="form-control">
 				<h:commandLink action="usuarioEditar"
 					value="#{msg['commons.alterar']}">
 					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
@@ -92,8 +92,9 @@ body {
 				</h:commandLink>
 			</h:column>
 
-			<h:column>
-				<h:commandLink action="#{usuarioBean.excluirUsuario}" value="#{msg['commons.excluir']}">
+			<h:column class="form-control">
+				<h:commandLink action="#{usuarioBean.excluirUsuario}"
+					value="#{msg['commons.excluir']}">
 					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
 						value="#{usuario}" />
 				</h:commandLink>
@@ -101,8 +102,10 @@ body {
 		</h:dataTable>
 		<hr />
 		<p>
-			<a class="btn btn-lg btn-primary" href="/trabalho" role="button">#{msg['commons.voltar']}</a>
-			<a class="btn btn-lg btn-primary" href="#{usuarioBean.novoUsuario()}" type="button">#{msg['commons.novo']}</a>
+			<a class="btn btn-lg btn-primary btn-block"
+				href="#{usuarioBean.novoUsuario()}" type="button">#{msg['commons.novo']}</a>
+			<a class="btn btn-lg btn-primary btn-block" href="/trabalho"
+				role="button">#{msg['commons.voltar']}</a> 
 		</p>
 	</h:form>
 </h:body>

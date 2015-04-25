@@ -8,7 +8,7 @@
 	<title><h:outputText
 			value="#{msg['page.usuariosEditar.title']}" /></title>
 	<link rel="stylesheet" href="./css/bootstrap.min.css" />
-	<link rel="stylesheet" href="./css/bootstrap-theme.min.css" />		
+	<link rel="stylesheet" href="./css/bootstrap-theme.min.css" />
 </h:head>
 <style>
 body {
@@ -61,33 +61,38 @@ body {
 <h:body>
 	<h:form class="form-signin" id="usuarioForm">
 		<h:inputHidden value="#{usuarioBean.usuario.id}" />
-		<h:panelGrid columns="2">
+		<h:panelGrid class="form-signin" columns="2">
 			<h:outputLabel for="idInput"
 				value="#{msg['page.usuarios.label.id']}:" />
-			<h:inputText id="idInput" value="#{usuarioBean.usuario.id}"
-				disabled="true" />
+			<h:inputText class="form-control" id="idInput"
+				value="#{usuarioBean.usuario.id}" disabled="true" />
 			<h:outputLabel for="cpfInput"
 				value="#{msg['page.usuarios.label.cpf']}:" />
-			<h:inputText id="cpfInput" value="#{usuarioBean.usuario.cpf}" />
+			<h:inputText class="form-control" id="cpfInput"
+				value="#{usuarioBean.usuario.cpf}" converter="converters.CpfConverter"/>
 			<h:outputLabel for="nomeReduzidoInput"
 				value="#{msg['page.usuarios.label.nomeReduzido']}:" />
-			<h:inputText id="nomeReduzidoInput"
+			<h:inputText class="form-control" id="nomeReduzidoInput"
 				value="#{usuarioBean.usuario.nomeReduzido}" />
 			<h:outputLabel for="nomeCompletoInput"
 				value="#{msg['page.usuarios.label.nomeCompleto']}:" />
-			<h:inputTextarea id="nomeCompletoInput"
+			<h:inputTextarea class="form-control" id="nomeCompletoInput"
 				value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20" />
 			<h:outputLabel for="emailInput"
 				value="#{msg['page.usuarios.label.email']}:" />
-			<h:inputText id="emailInput" value="#{usuarioBean.usuario.email}" />
+			<h:inputText class="form-control" id="emailInput"
+				value="#{usuarioBean.usuario.email}" />
 			<h:outputLabel for="senhaInput"
 				value="#{msg['page.usuarios.label.senha']}:" />
-			<h:inputText id="senhaInput" value="#{usuarioBean.usuario.senha}" />
+			<h:inputText class="form-control" id="senhaInput"
+				value="#{usuarioBean.usuario.senha}" />
 		</h:panelGrid>
 		<hr />
-		<h:commandButton action="#{usuarioBean.salvarUsuario()}"
+		<h:commandButton class="btn btn-lg btn-primary btn-block"
+			action="#{usuarioBean.salvarUsuario()}"
 			value="#{msg['commons.salvar']}" />
-		<h:commandButton action="listar-usuarios.xhtml" value="#{msg['commons.voltar']}" />
+		<h:commandButton class="btn btn-lg btn-primary btn-block"
+			action="listar-usuarios.xhtml" value="#{msg['commons.voltar']}" />
 	</h:form>
 </h:body>
 </html>

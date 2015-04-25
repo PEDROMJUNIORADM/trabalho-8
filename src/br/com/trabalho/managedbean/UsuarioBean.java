@@ -49,6 +49,6 @@ public class UsuarioBean {
 	
 	public String salvarUsuario(){
 		usuarioBusiness.incluirUsuario(usuario);
-		return "listar-usuarios.xhtml";
+		return "usuarioEditar.xhtml";
 	}
 }
