@@ -21,12 +21,13 @@ public class UsuarioBusiness {
 		this.usuarioDao = usuarioDao;
 	}
 	
-	public Usuario autenticarUsuario(String cpf, String senha)
-			throws UsuarioInvalidoException {
+	public Usuario autenticarUsuario(String cpf, String senha) throws UsuarioInvalidoException {
 		Usuario usuario = usuarioDao.consultarUsuarioCPF(cpf);
+
 		if (usuario == null || !usuario.getSenha().equals(senha)) {
 			throw new UsuarioInvalidoException();
 		}
+
 		return usuario;
 	}
 
