@@ -15,6 +15,7 @@ public class UsuarioBean {
 	/** Referencia para a camada de regras de negocio */
 	@ManagedProperty("#{usuarioBusiness}")
 	private UsuarioBusiness usuarioBusiness;
+	
 	/** Usuario a serusado no form. */
 	private Usuario usuario = new Usuario();
 
