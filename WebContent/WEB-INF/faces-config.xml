@@ -15,4 +15,10 @@
 			<supported-locale>en</supported-locale>
 		</locale-config>
 	</application>
+	
+	<lifecycle>
+        <phase-listener>
+            br.com.trabalho.listener.LoginPhaseListener
+        </phase-listener>
+    </lifecycle>
 </faces-config>
