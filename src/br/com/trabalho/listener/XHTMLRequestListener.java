@@ -29,7 +29,7 @@ public class XHTMLRequestListener implements ServletRequestListener {
 			mapXHTMLCounters = (HashMap<String, Integer>) context.getAttribute("mapCounters");
 		}
 		
-		if (httpRequest.getRequestURI().endsWith(".xhtml") && httpRequest.getSession().getAttribute("login") != null) {
+		if (httpRequest.getRequestURI().endsWith(".xhtml")) {
 			int count = 0;
 			if (mapXHTMLCounters.containsKey(httpRequest.getRequestURI())) {
 				count = mapXHTMLCounters.get(httpRequest.getRequestURI());

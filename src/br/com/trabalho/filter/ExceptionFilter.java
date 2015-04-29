@@ -30,7 +30,7 @@ public class ExceptionFilter implements Filter {
 			HttpServletRequest httpRequest = (HttpServletRequest) request;
 			HttpServletResponse httpResponse = (HttpServletResponse) response;
 
-			System.out.println("Erro ao processar requisicao.");
+			System.out.println("Erro: "+e.getMessage());
 			httpResponse.sendRedirect(httpRequest.getContextPath()
 					+ "/error.html");
 		}

@@ -10,10 +10,17 @@
 			<base-name>SystemMessages</base-name>
 			<var>msg</var>
 		</resource-bundle>
+		
 		<locale-config>
 			<default-locale>pt_BR</default-locale>
 			<supported-locale>en</supported-locale>
 		</locale-config>
 	</application>
+	
+	<lifecycle>
+        <phase-listener>
+            br.com.trabalho.listener.LoginPhaseListener
+        </phase-listener>
+    </lifecycle>
 
 </faces-config>
