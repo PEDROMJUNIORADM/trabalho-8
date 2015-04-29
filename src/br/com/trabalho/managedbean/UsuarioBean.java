@@ -49,6 +49,6 @@ public class UsuarioBean {
 	
 	public String salvarUsuario(){
 		usuarioBusiness.incluirUsuario(usuario);
-		return "usuarioEditar.xhtml";
+		return "listar-usuarios.xhtml?faces-redirect=true";
 	}
 }

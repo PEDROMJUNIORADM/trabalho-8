@@ -3,7 +3,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui">
 
 
 <h:head>
@@ -59,15 +60,16 @@ body {
 }
 </style>
 <h:body>
-	<h:form class="form-signin">
+	<h:form class="form-signin" >
 		<h:dataTable class="form-signin" value="#{usuarioBean.listaUsuarios}"
-			var="usuario" border="1" cellspacing="1" cellpadding="2" width="650	px">>
-			
+			var="usuario" border="2" cellpadding="2" width="650	px">
+
 			<h:column class="form-control">
-				<f:facet name="header" class="form-control">
+				<f:facet name="header">
 					<h:outputText value="#{msg['page.usuarios.label.cpf']}" />
 				</f:facet>
-				<h:outputText value="#{usuario.cpf}" />
+				<h:outputText value="#{usuario.cpf}"
+					converter="converters.CpfConverter" />
 			</h:column>
 
 			<h:column class="form-control">
@@ -85,19 +87,32 @@ body {
 			</h:column>
 
 			<h:column class="form-control">
-				<h:commandLink action="usuarioEditar"
-					value="#{msg['commons.alterar']}">
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
-						value="#{usuario}" />
-				</h:commandLink>
+				<f:facet name="header">
+					<h:outputText value="#{msg['page.usuarios.label.cep']}" />
+				</f:facet>
+				<h:outputText value="#{usuario.cep}"
+					converter="converters.CepConverter" />
 			</h:column>
 
 			<h:column class="form-control">
-				<h:commandLink action="#{usuarioBean.excluirUsuario}"
-					value="#{msg['commons.excluir']}">
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
-						value="#{usuario}" />
-				</h:commandLink>
+				<h:panelGrid class="form-signin" columns="1" align="center">
+					<h:commandButton class="btn btn-primary" action="usuarioEditar"
+						value="#{msg['commons.alterar']}">
+						<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+							value="#{usuario}" />
+					</h:commandButton>
+				</h:panelGrid>
+			</h:column>
+
+			<h:column class="form-control">
+				<h:panelGrid class="form-signin" columns="1" align="center">
+					<h:commandButton class="btn btn-primary"
+						action="#{usuarioBean.excluirUsuario}"
+						value="#{msg['commons.excluir']}">
+						<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+							value="#{usuario}" />
+					</h:commandButton>
+				</h:panelGrid>
 			</h:column>
 		</h:dataTable>
 		<hr />
@@ -105,7 +120,7 @@ body {
 			<a class="btn btn-lg btn-primary btn-block"
 				href="#{usuarioBean.novoUsuario()}" type="button">#{msg['commons.novo']}</a>
 			<a class="btn btn-lg btn-primary btn-block" href="/trabalho"
-				role="button">#{msg['commons.voltar']}</a> 
+				role="button">#{msg['commons.voltar']}</a>
 		</p>
 	</h:form>
 </h:body>

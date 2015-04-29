@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title><h:outputText
 			value="#{msg['page.usuariosEditar.title']}" /></title>
@@ -59,40 +60,58 @@ body {
 </style>
 
 <h:body>
-	<h:form class="form-signin" id="usuarioForm">
-		<h:inputHidden value="#{usuarioBean.usuario.id}" />
-		<h:panelGrid class="form-signin" columns="2">
-			<h:outputLabel for="idInput"
-				value="#{msg['page.usuarios.label.id']}:" />
-			<h:inputText class="form-control" id="idInput"
-				value="#{usuarioBean.usuario.id}" disabled="true" />
-			<h:outputLabel for="cpfInput"
-				value="#{msg['page.usuarios.label.cpf']}:" />
-			<h:inputText class="form-control" id="cpfInput"
-				value="#{usuarioBean.usuario.cpf}" converter="converters.CpfConverter"/>
-			<h:outputLabel for="nomeReduzidoInput"
-				value="#{msg['page.usuarios.label.nomeReduzido']}:" />
-			<h:inputText class="form-control" id="nomeReduzidoInput"
-				value="#{usuarioBean.usuario.nomeReduzido}" />
-			<h:outputLabel for="nomeCompletoInput"
-				value="#{msg['page.usuarios.label.nomeCompleto']}:" />
-			<h:inputTextarea class="form-control" id="nomeCompletoInput"
-				value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20" />
-			<h:outputLabel for="emailInput"
-				value="#{msg['page.usuarios.label.email']}:" />
-			<h:inputText class="form-control" id="emailInput"
-				value="#{usuarioBean.usuario.email}" />
-			<h:outputLabel for="senhaInput"
-				value="#{msg['page.usuarios.label.senha']}:" />
-			<h:inputText class="form-control" id="senhaInput"
-				value="#{usuarioBean.usuario.senha}" />
-		</h:panelGrid>
-		<hr />
-		<h:commandButton class="btn btn-lg btn-primary btn-block"
-			action="#{usuarioBean.salvarUsuario()}"
-			value="#{msg['commons.salvar']}" />
-		<h:commandButton class="btn btn-lg btn-primary btn-block"
-			action="listar-usuarios.xhtml" value="#{msg['commons.voltar']}" />
-	</h:form>
+	<div class="container">
+		<h:form class="form-signin" id="usuarioForm" prependId="false">
+			<h:inputHidden value="#{usuarioBean.usuario.id}" />
+			<h:panelGrid class="form-signin" columns="2">
+				<h:outputLabel for="idInput"
+					value="#{msg['page.usuarios.label.id']}:" />
+				<h:inputText class="form-control" id="idInput"
+					value="#{usuarioBean.usuario.id}" readonly="true" />
+				<h:outputLabel for="cpfInput"
+					value="#{msg['page.usuarios.label.cpf']}:" />
+				<p:inputMask class="form-control" id="cpfInput"
+					value="#{usuarioBean.usuario.cpf}"
+					converter="converters.CpfConverter" required="true"
+					requiredMessage="O número do cpf deve ser informado"
+					mask="999.999.999-99">
+					<f:validateLength maximum="11" minimum="11" />
+					<f:validator validatorId="validators.CpfValidator" />
+				</p:inputMask>
+				<h:outputLabel for="nomeReduzidoInput"
+					value="#{msg['page.usuarios.label.nomeReduzido']}:" />
+				<h:inputText class="form-control" id="nomeReduzidoInput"
+					value="#{usuarioBean.usuario.nomeReduzido}" />
+				<h:outputLabel for="nomeCompletoInput"
+					value="#{msg['page.usuarios.label.nomeCompleto']}:" />
+				<h:inputTextarea class="form-control" id="nomeCompletoInput"
+					value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20" />
+				<h:outputLabel for="emailInput"
+					value="#{msg['page.usuarios.label.email']}:" />
+				<h:inputText class="form-control" id="emailInput"
+					value="#{usuarioBean.usuario.email}" />
+				<h:outputLabel for="senhaInput"
+					value="#{msg['page.usuarios.label.senha']}:" />
+				<h:inputText class="form-control" id="senhaInput"
+					value="#{usuarioBean.usuario.senha}" />
+				<h:outputLabel for="cepInput"
+					value="#{msg['page.usuarios.label.cep']}:" />
+				<h:inputText class="form-control" id="cepInput"
+					value="#{usuarioBean.usuario.cep}"
+					converter="converters.CepConverter" required="true"
+					requiredMessage="O número do cep deve ser informado" />
+			</h:panelGrid>
+			<hr />
+			<h:commandButton class="btn btn-lg btn-primary btn-block"
+				action="#{usuarioBean.salvarUsuario}"
+				value="#{msg['commons.salvar']}" />
+			<h:commandButton class="btn btn-lg btn-primary btn-block"
+				action="listar-usuarios.xhtml?faces-redirect=true"
+				value="#{msg['commons.voltar']}" immediate="true" />
+			<hr />
+			<h:message class="form-control" for="cpfInput" style="color:red" />
+			<h:message class="form-control" for="cepInput" style="color:red" />
+		</h:form>
+	</div>
 </h:body>
 </html>

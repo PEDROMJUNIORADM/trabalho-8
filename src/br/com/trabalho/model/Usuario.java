@@ -20,6 +20,8 @@ public class Usuario extends EntidadeBase implements Serializable {
 	private String cpf;
 
 	private Date dataNascimento;
+	
+	private Cep cep;
 
 	public String getNomeCompleto() {
 		return nomeCompleto;
@@ -85,4 +87,12 @@ public class Usuario extends EntidadeBase implements Serializable {
         this();
         setId(id);
     }
+
+	public Cep getCep() {
+		return cep;
+	}
+
+	public void setCep(Cep cep) {
+		this.cep = cep;
+	}
 }
