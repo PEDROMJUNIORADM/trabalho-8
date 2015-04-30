@@ -104,13 +104,13 @@ body {
 			<hr />
 			<h:commandButton class="btn btn-lg btn-primary btn-block"
 				action="#{usuarioBean.salvarUsuario}"
-				value="#{msg['commons.salvar']}" />
+				value="#{msg['commons.salvar']}" /> 
 			<h:commandButton class="btn btn-lg btn-primary btn-block"
-				action="listar-usuarios.xhtml?faces-redirect=true"
+				action="listar-usuarios?faces-redirect=true"
 				value="#{msg['commons.voltar']}" immediate="true" />
 			<hr />
-			<h:message class="form-control" for="cpfInput" style="color:red" />
-			<h:message class="form-control" for="cepInput" style="color:red" />
+			<h:message for="cpfInput" class="alert alert-danger" />
+			<h:message for="cepInput" class="alert alert-danger" />
 		</h:form>
 	</div>
 </h:body>

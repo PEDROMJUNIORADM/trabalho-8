@@ -45,7 +45,7 @@ public class UsuarioBean {
 
 	public String novoUsuario(){
 		usuario = new Usuario();
-		return "usuarioEditar.xhtml";
+		return "usuario-editar.xhtml";
 	}
 	
 	public String salvarUsuario(){
