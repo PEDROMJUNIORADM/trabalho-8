@@ -15,7 +15,7 @@ public class UsuarioBean {
 	/** Referencia para a camada de regras de negocio */
 	@ManagedProperty("#{usuarioBusiness}")
 	private UsuarioBusiness usuarioBusiness;
-	
+
 	/** Usuario a serusado no form. */
 	private Usuario usuario = new Usuario();
 
@@ -43,12 +43,12 @@ public class UsuarioBean {
 		usuarioBusiness.excluirUsuario(usuario);
 	}
 
-	public String novoUsuario(){
+	public String novoUsuario() {
 		usuario = new Usuario();
 		return "usuario-editar.xhtml";
 	}
-	
-	public String salvarUsuario(){
+
+	public String salvarUsuario() {
 		usuarioBusiness.incluirUsuario(usuario);
 		return "listar-usuarios.xhtml?faces-redirect=true";
 	}

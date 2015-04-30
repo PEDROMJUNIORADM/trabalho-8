@@ -21,7 +21,7 @@
 <h:body>
 	<div class="container">
 	
-        <h2>Lista de Usuarios</h2>
+        <h2>#{msg['page.usuarios.title.lista']}</h2>
       
 		<h:form class="form-signin">
 			<h:dataTable class="table table-bordered" value="#{usuarioBean.listaUsuarios}" var="usuario">
@@ -30,7 +30,7 @@
 					<f:facet name="header" class="form-control">
 						<h:outputText value="#{msg['page.usuarios.label.cpf']}" />
 					</f:facet>
-					<h:outputText value="#{usuario.cpf}" />
+					<h:outputText value="#{usuario.cpf}" converter="converters.CpfConverter"/>
 				</h:column>
 	
 				<h:column class="form-control">
@@ -45,6 +45,13 @@
 						<h:outputText value="#{msg['page.usuarios.label.email']}" />
 					</f:facet>
 					<h:outputText value="#{usuario.email}" />
+				</h:column>
+				
+				<h:column class="form-control">
+					<f:facet name="header">
+						<h:outputText value="#{msg['page.usuarios.label.cep']}" />
+					</f:facet>
+					<h:outputText value="#{usuario.cep}" converter="converters.CepConverter"/>
 				</h:column>
 	
 				<h:column class="form-control">
