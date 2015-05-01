@@ -1,5 +1,6 @@
 package br.com.trabalho.dao;
 
+import java.util.Calendar;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -12,7 +13,7 @@ import br.com.trabalho.model.Usuario;
 public class UsuarioDao extends GenericListDao<Usuario> {
 
 	public UsuarioDao() {
-		/**Calendar dataNascimento = Calendar.getInstance();
+		Calendar dataNascimento = Calendar.getInstance();
 		dataNascimento.set(2015, 1, 1);
 
 		Usuario usuario = new Usuario();
@@ -24,7 +25,7 @@ public class UsuarioDao extends GenericListDao<Usuario> {
 		usuario.setCpf("1");
 		usuario.setDataNascimento(dataNascimento.getTime());
 
-		super.salvar(usuario);*/
+		super.salvar(usuario);
 	}
 
 	public void salvarUsuario(Usuario usuario) {
