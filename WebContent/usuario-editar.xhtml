@@ -19,7 +19,7 @@ body {
 }
 
 .form-signin {
-	max-width: 800px;
+	max-width: 900px;
 	padding: 15px;
 	margin: 0 auto;
 }
@@ -57,6 +57,17 @@ body {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
+.gridCol1 {
+	width: 150px;
+}
+
+.gridCol2 {
+	Width: 300px;
+}
+.gridCol3 {
+	Width: 450px;
+}
 </style>
 
 <h:body>
@@ -64,7 +75,7 @@ body {
 		<h:form class="form-signin" id="usuarioForm">
 			<h2>#{msg['page.usuarios.title.cadastro']}</h2>
 			<h:inputHidden value="#{usuarioBean.usuario.id}" />
-			<h:panelGrid columns="3">
+			<h:panelGrid columns="3" columnClasses="gridCol1, gridCol2, gridCol3">
 				<h:outputLabel for="idInput"
 					value="#{msg['page.usuarios.label.id']}:" />
 				<h:inputText class="form-control" id="idInput"
@@ -103,7 +114,8 @@ body {
 					value="#{msg['page.usuarios.label.dataNascimento']}:" />
 				<p:inputMask class="form-control" id="dataNascimentoInput"
 					value="#{usuarioBean.usuario.dataNascimento}" required="true"
-					requiredMessage="#{msg['page.required.dtNascimento']}" mask="99/99/9999">
+					requiredMessage="#{msg['page.required.dtNascimento']}"
+					mask="99/99/9999">
 					<f:convertDateTime pattern="dd/MM/yyyy" />
 				</p:inputMask>
 				<h:message for="dataNascimentoInput" class="alert alert-danger" />
