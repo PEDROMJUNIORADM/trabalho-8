@@ -44,12 +44,12 @@
 
 <h:body>
 	<ui:include src="/menu.xhtml" />
-
+	
 	<div class="container">
 	  <h1>JOGO DA FORCA</h1>
 	  
-	  <p>#{msg['page.forca.label.dica']} #{jogoForcaBean.dica}</p>
-	  <p>Chances: #{jogoForcaBean.chances}</p>
+	  <p class="text-info"><b>#{msg['page.forca.label.dica']}</b> #{jogoForcaBean.dica}</p>
+	  <p class="text-warning"><b>Chances:</b> #{jogoForcaBean.chances}</p>
 	  
 	  <h:form id="forcaForm">
 	  	  <div class="col-md-12 text-center">
