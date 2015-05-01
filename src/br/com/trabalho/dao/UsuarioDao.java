@@ -32,9 +32,9 @@ public class UsuarioDao extends GenericListDao<Usuario> {
 
 		usuario = new Usuario();
 
-		usuario.setNomeReduzido("joão maria");
-		usuario.setNomeCompleto("joão maria dos santos filho");
-		usuario.setEmail("joão@admin.com");
+		usuario.setNomeReduzido("joao maria");
+		usuario.setNomeCompleto("joao maria dos santos filho");
+		usuario.setEmail("joao@admin.com");
 		usuario.setSenha("teste");
 		usuario.setCpf("22222222222");
 		usuario.setDataNascimento(dataNascimento.getTime());
