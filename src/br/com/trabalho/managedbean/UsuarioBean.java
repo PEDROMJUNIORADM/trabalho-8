@@ -1,13 +1,15 @@
-
 package br.com.trabalho.managedbean;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import br.com.trabalho.business.UsuarioBusiness;
+import br.com.trabalho.business.UsuarioCadastradoException;
 import br.com.trabalho.model.Usuario;
 
 @ManagedBean
@@ -16,7 +18,7 @@ public class UsuarioBean {
 	/** Referencia para a camada de regras de negocio */
 	@ManagedProperty("#{usuarioBusiness}")
 	private UsuarioBusiness usuarioBusiness;
-	
+
 	private String msgSucesso;
 
 	/** Usuario a serusado no form. */
@@ -52,9 +54,18 @@ public class UsuarioBean {
 	}
 
 	public String salvarUsuario() {
-		usuarioBusiness.incluirUsuario(usuario);
-		msgSucesso = "Usuário cadastrado com sucesso!";
-		return "listar-usuarios.xhtml?faces-redirect=true";
+		try {
+			usuarioBusiness.incluirUsuario(usuario);
+			msgSucesso = "Usuário cadastrado com sucesso!";
+			return "listar-usuarios.xhtml?faces-redirect=true";
+		} catch (UsuarioCadastradoException e) {
+			FacesMessage message = new FacesMessage();
+			message.setSeverity(FacesMessage.SEVERITY_ERROR);
+			message.setDetail(e.getMessage());
+			FacesContext.getCurrentInstance().addMessage("usuarioForm", message);
+			return null;
+		}
+		
 	}
 
 	public String getMsgSucesso() {

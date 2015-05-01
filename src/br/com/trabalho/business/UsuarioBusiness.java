@@ -11,17 +11,17 @@ import br.com.trabalho.model.Usuario;
 
 @ApplicationScoped
 @ManagedBean(name = "usuarioBusiness")
-
 public class UsuarioBusiness {
-	
+
 	@ManagedProperty("#{usuarioDao}")
 	private UsuarioDao usuarioDao;
 
 	public void setUsuarioDao(UsuarioDao usuarioDao) {
 		this.usuarioDao = usuarioDao;
 	}
-	
-	public Usuario autenticarUsuario(String cpf, String senha) throws UsuarioInvalidoException {
+
+	public Usuario autenticarUsuario(String cpf, String senha)
+			throws UsuarioInvalidoException {
 		Usuario usuario = usuarioDao.consultarUsuarioCPF(cpf);
 
 		if (usuario == null || !usuario.getSenha().equals(senha)) {
@@ -31,8 +31,11 @@ public class UsuarioBusiness {
 		return usuario;
 	}
 
-	public void incluirUsuario(Usuario usuario) {
-		usuarioDao.salvarUsuario(usuario);
+	public void incluirUsuario(Usuario usuario) throws UsuarioCadastradoException {
+		if (usuarioDao.consultarUsuarioCPF(usuario.getCpf()) == null)
+			usuarioDao.salvarUsuario(usuario);
+		else
+			throw new UsuarioCadastradoException();
 	}
 
 	public void excluirUsuario(Usuario usuario) {
