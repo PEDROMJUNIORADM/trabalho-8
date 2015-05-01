@@ -56,7 +56,7 @@ public class EstadoBusiness {
 		return estadoDao.selecionarEstado(estado);
 	}
 
-	public List<Estado> selecionarTodos() {
+	public List<Estado> listarEstados() {
 		return estadoDao.listarEstados();
 	}
 }
