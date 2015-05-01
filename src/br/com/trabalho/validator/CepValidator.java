@@ -21,8 +21,8 @@ public class CepValidator implements Validator {
 			if (!Validador.validarCep(cep.getRegiao(), cep.getSufixo())) {
 				FacesMessage message = new FacesMessage();
 				message.setSeverity(FacesMessage.SEVERITY_ERROR);
-				message.setSummary("Erro de Validação");
-				message.setDetail("Cep Inválido");
+				message.setSummary("Erro de Validacao");
+				message.setDetail("Cep Invalido");
 				throw new ValidatorException(message);
 			}
 		}
