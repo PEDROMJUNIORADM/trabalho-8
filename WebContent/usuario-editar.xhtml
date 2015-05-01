@@ -49,8 +49,7 @@
 		<div class="page-header">
 			<h2>#{msg['page.usuarios.title.cadastro']}</h2>
 		</div>
-
-		
+	
 		<h:form id="usuarioForm">
 			<h:inputHidden value="#{usuarioBean.usuario.id}" />
 			
@@ -127,8 +126,8 @@
 				</h:inputSecret>
 				<h:message for="senhaInput" class="text-danger" />
 			</h:panelGrid>
-			
-			<div class="btn-group  btn-group-lg">
+			<br/>
+			<div class="btn-toolbar btn-group-lg">
 				<h:commandButton class="btn btn-primary"
 					action="#{usuarioBean.salvarUsuario}"
 					value="#{msg['commons.salvar']}" />
