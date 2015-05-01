@@ -13,7 +13,7 @@
 </h:head>
 <style>
 body {
-	padding-top: 40px;
+	padding-top: 20px;
 	padding-bottom: 40px;
 	background-color: #eee;
 }
@@ -61,7 +61,6 @@ body {
 
 <h:body>
 	<div class="container">
-
 		<h:form class="form-signin" id="usuarioForm">
 			<h2>#{msg['page.usuarios.title.cadastro']}</h2>
 			<h:inputHidden value="#{usuarioBean.usuario.id}" />
@@ -77,8 +76,7 @@ body {
 				<p:inputMask class="form-control" id="cpfInput"
 					value="#{usuarioBean.usuario.cpf}"
 					converter="converters.CpfConverter" required="true"
-					requiredMessage="O número do cpf deve ser informado"
-					mask="999.999.999-99">
+					requiredMessage="#{msg['page.required.cpf']}" mask="999.999.999-99">
 					<f:validateLength maximum="11" minimum="11" />
 					<f:validator validatorId="validators.CpfValidator" />
 				</p:inputMask>
@@ -88,42 +86,59 @@ body {
 					value="#{msg['page.usuarios.label.nomeReduzido']}:" />
 				<h:inputText class="form-control" id="nomeReduzidoInput"
 					value="#{usuarioBean.usuario.nomeReduzido}" required="true"
-					requiredMessage="Nome reduzido deve conter de 5 a 10 caracteres" >
+					requiredMessage="#{msg['page.required.nomeReduzido']}">
 					<f:validateLength maximum="10" minimum="5" />
 				</h:inputText>
-				<h:message for="nomeReduzidoInput" class="alert alert-danger"/>
+				<h:message for="nomeReduzidoInput" class="alert alert-danger" />
 
 				<h:outputLabel for="nomeCompletoInput"
 					value="#{msg['page.usuarios.label.nomeCompleto']}:" />
 				<h:inputTextarea class="form-control" id="nomeCompletoInput"
-					value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20" />
-				<h:message for="cpfInput" class="alert alert-danger" />
+					value="#{usuarioBean.usuario.nomeCompleto}" rows="5" cols="20"
+					required="true"
+					requiredMessage="#{msg['page.required.nomeCompleto']}" />
+				<h:message for="nomeCompletoInput" class="alert alert-danger" />
+
+				<h:outputLabel for="dataNascimentoInput"
+					value="#{msg['page.usuarios.label.dataNascimento']}:" />
+				<p:inputMask class="form-control" id="dataNascimentoInput"
+					value="#{usuarioBean.usuario.dataNascimento}" required="true"
+					requiredMessage="#{msg['page.required.dtNascimento']}" mask="99/99/9999">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputMask>
+				<h:message for="dataNascimentoInput" class="alert alert-danger" />
 
 				<h:outputLabel for="emailInput"
 					value="#{msg['page.usuarios.label.email']}:" />
 				<h:inputText class="form-control" id="emailInput"
-					value="#{usuarioBean.usuario.email}" />
-				<h:message for="cpfInput" class="alert alert-danger" />
-
-				<h:outputLabel for="senhaInput"
-					value="#{msg['page.usuarios.label.senha']}:" />
-				<h:inputText class="form-control" id="senhaInput"
-					value="#{usuarioBean.usuario.senha}" />
-				<h:message for="cpfInput" class="alert alert-danger" />
+					value="#{usuarioBean.usuario.email}" required="true"
+					requiredMessage="#{msg['page.required.email']}"
+					validatorMessage="#{msg['page.validator.email']}">
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+				</h:inputText>
+				<h:message for="emailInput" class="alert alert-danger" />
 
 				<h:outputLabel for="cepInput"
 					value="#{msg['page.usuarios.label.cep']}:" />
 				<h:inputText class="form-control" id="cepInput"
 					value="#{usuarioBean.usuario.cep}"
 					converter="converters.CepConverter" required="true"
-					requiredMessage="O número do cep deve ser informado">
+					requiredMessage="#{msg['page.required.cep']}">
 
-					<f:validateLength maximum="8" minimum="8" />
 					<f:validator validatorId="validators.CepValidator" />
 				</h:inputText>
 				<h:message for="cepInput" class="alert alert-danger" />
+
+				<h:outputLabel for="senhaInput"
+					value="#{msg['page.usuarios.label.senha']}:" />
+				<h:inputSecret class="form-control" id="senhaInput"
+					value="#{usuarioBean.usuario.senha}" required="true"
+					requiredMessage="#{msg['page.required.senha']}">
+					<f:validateLength maximum="10" minimum="6" />
+				</h:inputSecret>
+				<h:message for="senhaInput" class="alert alert-danger" />
 			</h:panelGrid>
-			<hr />
 			<div class="btn-toolbar">
 				<h:commandButton class="btn btn-lg btn-primary"
 					action="#{usuarioBean.salvarUsuario}"
