@@ -22,7 +22,7 @@ public class UsuarioDao extends GenericListDao<Usuario> {
 		usuario.setNomeCompleto("Administrador do Sistema");
 		usuario.setEmail("admin@admin.com");
 		usuario.setSenha("admin");
-		usuario.setCpf("1");
+		usuario.setCpf("11111111111");
 		usuario.setDataNascimento(dataNascimento.getTime());
 
 		super.salvar(usuario);

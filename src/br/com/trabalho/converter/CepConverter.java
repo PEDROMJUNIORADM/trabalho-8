@@ -18,7 +18,7 @@ public class CepConverter implements Converter {
 		if (value != null && !value.equals("")) {
 			String cepTxt = value.replaceAll("\\-", "");
 			String regiao = cepTxt.substring(0, 5);
-			String sufixo = cepTxt.substring(5, 8);
+			String sufixo = cepTxt.substring(5, cepTxt.length());
 			try {
 				// Testa se somente existem numeros.
 				Long.valueOf(regiao);
