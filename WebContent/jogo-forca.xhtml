@@ -43,11 +43,13 @@
 </h:head>
 
 <h:body>
+	<ui:include src="/menu.xhtml" />
+	
 	<div class="container">
 	  <h1>JOGO DA FORCA</h1>
 	  
-	  <p>#{msg['page.forca.label.dica']} #{jogoForcaBean.dica}</p>
-	  <p>Chances: #{jogoForcaBean.chances}</p>
+	  <p class="text-info"><b>#{msg['page.forca.label.dica']}</b> #{jogoForcaBean.dica}</p>
+	  <p class="text-warning"><b>Chances:</b> #{jogoForcaBean.chances}</p>
 	  
 	  <h:form id="forcaForm">
 	  	  <div class="col-md-12 text-center">
@@ -61,13 +63,13 @@
 		  </div>
 		  
 		  <div class="col-md-12 text-center">
-		  	  <div class="group-center">
+		  	<div class="group-center">
+		  	  <h:panelGroup id="groupCenter" rendered="#{jogoForcaBean.fimDeJogo() == false}">
 		  	  		<p>#{msg['page.forca.label']}</p>
 			  	  	<div class="input-group">
 					  <h:inputText id="palpite" 
 					  		valueChangeListener="#{jogoForcaBean.onChange}"
 					  		binding="#{jogoForcaBean.palpiteInput}"
-					  		rendered="#{jogoForcaBean.fimDeJogo() == false}"
 					  		maxlength="1"
 					  		class="form-control input-lg"
 					  		autofocus="true"
@@ -77,18 +79,20 @@
 					  </h:inputText>
 					  
 					  <span class="input-group-btn">
-					  	  <h:commandButton class="btn btn-default btn-lg" value="OK!" rendered="#{jogoForcaBean.fimDeJogo() == false}">
+					  	  <h:commandButton class="btn btn-default btn-lg" value="OK!">
 						  	<f:ajax event="keyup" execute="@this" render="listaPalavras palpite msgAcertou" />
 						  </h:commandButton>
 					  </span>
 				  </div>
-		  	  </div>	
+				  
+				  <h:message for="palpite" class="text-danger"></h:message>
+		  	  </h:panelGroup>
+			  </div>
 			  
-			  <h:message for="palpite"></h:message>
 		  </div>
 		  		  
 		  <h2 class="text-center"><h:outputText id="msgAcertou" value="#{msg[jogoForcaBean.messagemFimJogo]}" rendered="#{jogoForcaBean.fimDeJogo() == true}" /></h2>
-		  <p class="text-center"><h:commandButton id="btnNewGame" class="btn btn-primary" value="#{msg['page.forca.label.new']}" rendered="true" action="#{jogoForcaBean.newGame()}" /></p>
+		  <p class="text-center"><h:commandButton id="btnNewGame" immediate="true" class="btn btn-primary" value="#{msg['page.forca.label.new']}" rendered="true" action="#{jogoForcaBean.newGame()}" /></p>
 		  
 	  </h:form>
 	  
@@ -97,8 +101,7 @@
     </div> <!-- /container -->
     
     <!-- JS -->
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <ui:include src="/footer.xhtml" />
     
     <script>
     	$(document).ready(function(){
