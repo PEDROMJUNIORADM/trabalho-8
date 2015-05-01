@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title><h:outputText value="#{msg['page.login.title']}" /></title>
@@ -72,12 +73,11 @@ span.alert {
 				<h:outputText value="#{msg['page.login.title']}" />
 			</h2>
 			<h:message for="loginForm" class="alert alert-danger" />
-			
-			<h:inputText class="form-control"
+
+			<p:inputMask class="form-control"
 				placeholder="#{msg['page.login.label.cpf']}" id="cpfInput"
-				value="#{loginBean.cpf}" converter="converters.CpfConverter"
-				required="true" mask="999.999.999-99" maxlength="11" size="12">
-			</h:inputText>
+				value="#{loginBean.cpf}" required="true" mask="999.999.999-99" converter="converters.CpfConverter">
+			</p:inputMask>
 
 			<h:inputSecret placeholder="#{msg['page.login.label.senha']}"
 				class="form-control" id="senhaInput" value="#{loginBean.senha}"
@@ -90,6 +90,7 @@ span.alert {
 			<h:commandLink action="#{usuarioBean.novoUsuario()}"
 				value="#{msg['commons.newconta']}" immediate="true" />
 			<br />
+			<h:outputText value="#{usuarioBean.msgSucesso}" />
 		</h:form>
 	</div>
 </h:body>

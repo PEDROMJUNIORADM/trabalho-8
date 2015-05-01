@@ -16,6 +16,8 @@ public class UsuarioBean {
 	/** Referencia para a camada de regras de negocio */
 	@ManagedProperty("#{usuarioBusiness}")
 	private UsuarioBusiness usuarioBusiness;
+	
+	private String msgSucesso;
 
 	/** Usuario a serusado no form. */
 	private Usuario usuario = new Usuario();
@@ -51,6 +53,15 @@ public class UsuarioBean {
 
 	public String salvarUsuario() {
 		usuarioBusiness.incluirUsuario(usuario);
+		msgSucesso = "Usuário cadastrado com sucesso!";
 		return "listar-usuarios.xhtml?faces-redirect=true";
+	}
+
+	public String getMsgSucesso() {
+		return msgSucesso;
+	}
+
+	public void setMsgSucesso(String msgSucesso) {
+		this.msgSucesso = msgSucesso;
 	}
 }

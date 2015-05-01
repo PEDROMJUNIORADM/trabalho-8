@@ -26,6 +26,21 @@ public class UsuarioDao extends GenericListDao<Usuario> {
 		usuario.setDataNascimento(dataNascimento.getTime());
 
 		super.salvar(usuario);
+		
+		dataNascimento = Calendar.getInstance();
+		dataNascimento.set(2014, 1, 1);
+
+		usuario = new Usuario();
+
+		usuario.setNomeReduzido("joão maria");
+		usuario.setNomeCompleto("joão maria dos santos filho");
+		usuario.setEmail("joão@admin.com");
+		usuario.setSenha("teste");
+		usuario.setCpf("22222222222");
+		usuario.setDataNascimento(dataNascimento.getTime());
+
+		super.salvar(usuario);
+
 	}
 
 	public void salvarUsuario(Usuario usuario) {
