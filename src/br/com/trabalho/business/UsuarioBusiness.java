@@ -31,13 +31,17 @@ public class UsuarioBusiness {
 		return usuario;
 	}
 
-	public void incluirUsuario(Usuario usuario) throws UsuarioCadastradoException {
-		if (usuarioDao.consultarUsuarioCPF(usuario.getCpf()) == null)
+	public void incluirUsuario(Usuario usuario) throws UsuarioCadastradoException {	
+		if (usuarioDao.consultarUsuarioCPF(usuario.getCpf()) == null )
 			usuarioDao.salvarUsuario(usuario);
 		else
 			throw new UsuarioCadastradoException();
 	}
-
+	
+	public void alterarUsuario(Usuario usuario){
+		usuarioDao.salvarUsuario(usuario);
+	}
+	
 	public void excluirUsuario(Usuario usuario) {
 		usuarioDao.excluirUsuario(usuario);
 	}

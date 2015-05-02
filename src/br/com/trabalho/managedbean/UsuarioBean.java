@@ -55,8 +55,10 @@ public class UsuarioBean {
 
 	public String salvarUsuario() {
 		try {
-			usuarioBusiness.incluirUsuario(usuario);
-			msgSucesso = "Usuário cadastrado com sucesso!";
+			if(usuario.getId() == null)
+				usuarioBusiness.incluirUsuario(usuario);
+			else
+				usuarioBusiness.alterarUsuario(usuario);
 			return "listar-usuarios.xhtml?faces-redirect=true";
 		} catch (UsuarioCadastradoException e) {
 			FacesMessage message = new FacesMessage();

@@ -137,7 +137,10 @@ span.alert {
 			<div class="btn-toolbar btn-group-lg">
 				<h:commandButton class="btn btn-primary"
 					action="#{usuarioBean.salvarUsuario}"
-					value="#{msg['commons.salvar']}" />
+					value="#{msg['commons.salvar']}">
+					<f:setPropertyActionListener target="#{usuarioBean.msgSucesso}"
+							value="Usuário cadastro com sucesso" />
+				</h:commandButton>
 				<h:commandButton class="btn btn-primary"
 					action="listar-usuarios?faces-redirect=true"
 					value="#{msg['commons.voltar']}" immediate="true" />

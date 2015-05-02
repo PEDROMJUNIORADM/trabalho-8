@@ -90,7 +90,10 @@ span.alert {
 			<h:commandLink action="#{usuarioBean.novoUsuario()}"
 				value="#{msg['commons.newconta']}" immediate="true" />
 			<br />
-			<h:outputText value="#{usuarioBean.msgSucesso}" />
+			<h:form id="msgSucesso">
+				<h:outputText value="#{usuarioBean.msgSucesso}" />
+			</h:form>
+			
 		</h:form>
 	</div>
 </h:body>
