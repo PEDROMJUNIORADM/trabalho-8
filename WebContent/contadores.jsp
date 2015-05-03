@@ -14,9 +14,9 @@
   </head>
   
   <body>
-
+	<jsp:include page="menu.xhtml" />
+	
     <div class="container">
-    
       <h1>Contadores de acesso</h1>
 
       <!-- Main component for a primary marketing message or call to action -->
@@ -34,11 +34,11 @@
       </ul>
       
       <p style="margin-top: 30px;">
-        <a class="btn btn-lg btn-primary" href="/trabalho" role="button">Voltar para página inicial</a>
+        <a class="btn btn-lg btn-primary" href="/trabalho" role="button">Página inicial</a>
       </p>
 
     </div> <!-- /container -->
 
-
+	<jsp:include page="footer.xhtml" />
   </body>
 </html>

@@ -32,7 +32,7 @@ public class Cidade extends EntidadeBase implements Serializable {
 	/**
 	 * Estado ao qual a cidade pertence.
 	 */
-	private Estado estado;
+	private Estado estado = new Estado();
 
 	public String getNome() {
 		return nome;

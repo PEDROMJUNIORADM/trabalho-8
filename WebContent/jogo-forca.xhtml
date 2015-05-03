@@ -90,8 +90,8 @@
 			  </div>
 			  
 		  </div>
-		  		  
-		  <h2 class="text-center"><h:outputText id="msgAcertou" value="#{msg[jogoForcaBean.messagemFimJogo]}" rendered="#{jogoForcaBean.fimDeJogo() == true}" /></h2>
+		  
+		  <h2 class="text-center"><h:outputText id="msgParcial" value="#{msg[jogoForcaBean.mensagem]}" rendered="#{jogoForcaBean.hasMensagem()}" /></h2>
 		  <p class="text-center"><h:commandButton id="btnNewGame" immediate="true" class="btn btn-primary" value="#{msg['page.forca.label.new']}" rendered="true" action="#{jogoForcaBean.newGame()}" /></p>
 		  
 	  </h:form>
