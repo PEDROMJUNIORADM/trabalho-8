@@ -10,7 +10,6 @@ import br.com.trabalho.dao.CidadeDao;
 import br.com.trabalho.dao.EstadoDao;
 import br.com.trabalho.model.Cidade;
 import br.com.trabalho.model.Estado;
-
 @ApplicationScoped
 @ManagedBean(name = "estadoBusiness")
 public class EstadoBusiness {
@@ -35,6 +34,7 @@ public class EstadoBusiness {
 		estadoDao.salvarEstado(estado);
 	}
 
+
 	private void validarCidades(Estado estado) throws PibInvalidoException {
 		if (estado.getCidades() != null) {
 			for (Cidade cidade : estado.getCidades()) {
@@ -46,6 +46,14 @@ public class EstadoBusiness {
 				}
 			}
 		}
+	}
+	
+	public void incluirEstado(Estado estado) {	
+		estadoDao.salvarEstado(estado);
+	}
+	
+	public void incluirCidade(Cidade cidade) {	
+		cidadeDao.salvarCidade(cidade);
 	}
 
 	public void excluirEstado(Estado estado) {
@@ -59,4 +67,13 @@ public class EstadoBusiness {
 	public List<Estado> listarEstados() {
 		return estadoDao.listarEstados();
 	}
+	
+	public void alterarEstado(Estado estado){
+		estadoDao.salvarEstado(estado);
+	}
+	
+	public void alterarCidade(Cidade cidade){
+		cidadeDao.salvarCidade(cidade);
+	}
+
 }

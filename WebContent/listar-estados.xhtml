@@ -18,8 +18,8 @@
 			<h:outputText value="#{msg['page.estados.title']}" />
 		</h2>
 
-		<h:form class="form-signin">
-			<h:dataTable class="table table-bordered"
+		<h:form id="listaEstadoForm" class="form-signin">
+			<h:dataTable id="estadoTable" class="table table-bordered"
 				value="#{estadoBean.listaEstados}" var="estado">
 
 				<h:column class="form-control">
@@ -44,10 +44,12 @@
 				</h:column>
 
 				<h:column class="form-control">
-					<h:commandLink action="#{estadoBean.excluirEstado()}"
-						value="#{msg['commons.alterar']}">
-						<f:setPropertyActionListener target="#{estadoBean.estado}"
-							value="#{estado}" />
+					<f:facet name="header">
+						<h:outputText value="#{msg['commons.alterar']}" />
+					</f:facet>
+					
+					<h:commandLink action="estado-editar?faces-redirect=true" value="#{msg['commons.alterar']}">
+						<f:setPropertyActionListener target="#{estadoBean.estado}" value="#{estado}" />
 					</h:commandLink>
 				</h:column>
 			</h:dataTable>

@@ -17,7 +17,6 @@ public class GenericListDao<T extends EntidadeBase>{
 		if (dado.getId() == null || dado.getId() <= 0) {
 			dado.setId(proximoId());
 			dados.add(dado);
-			System.out.println("usuario incluido com sucesso");
 		} else {
 			int pos = -1;
 			for(EntidadeBase dadoAux: dados){
@@ -26,7 +25,6 @@ public class GenericListDao<T extends EntidadeBase>{
 					break;
 				}
 			}
-			//System.out.println("Tamanho="+dados.indexOf(dado));
 			if (pos != -1)
 				dados.set(pos, dado);
 		}

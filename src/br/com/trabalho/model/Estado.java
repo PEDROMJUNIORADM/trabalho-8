@@ -1,6 +1,7 @@
 package br.com.trabalho.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Estado extends EntidadeBase implements Serializable {
@@ -23,7 +24,7 @@ public class Estado extends EntidadeBase implements Serializable {
 	/**
 	 * Cidades pertendcentes ao estado.
 	 */
-	private List<Cidade> cidades;
+	private List<Cidade> cidades = new ArrayList<Cidade>();
 
 	public String getNome() {
 		return nome;
@@ -47,5 +48,13 @@ public class Estado extends EntidadeBase implements Serializable {
 
 	public void setCidades(List<Cidade> cidades) {
 		this.cidades = cidades;
+	}
+	
+	public void setCidade(Cidade cidade) {
+		this.cidades.add(cidade);
+	}
+	
+	public void removeCidade(Cidade cidade) {
+		this.cidades.remove(cidade);
 	}
 }

@@ -16,6 +16,7 @@ public class EstadoDao extends GenericListDao<Estado> {
 			Estado estado = new Estado();
 			estado.setNome("Nome do estado " + i);
 			estado.setSigla("EST" + i);
+			
 			salvar(estado);
 		}
 	}

@@ -20,6 +20,8 @@ public class JogoForcaBean {
 	private int position;
 	private int chances;
 	
+	private String mensagem = "";
+	
 	public JogoForcaBean() {
 		newGame();
 	}
@@ -50,7 +52,14 @@ public class JogoForcaBean {
 			
 			if (letras.contains(palpite) && !letrasCertas.contains(palpite)) {
 				letrasCertas.add(palpite);
+				mensagem = "page.forca.acerto";
+			} else {
+				mensagem = "page.forca.erro";
 			}
+		}
+		
+		if (fimDeJogo()) {
+			mensagem = getMessagemFimJogo();
 		}
 		
 		this.palpiteInput.setValue("");
@@ -80,6 +89,7 @@ public class JogoForcaBean {
 		palpites = new ArrayList<String>();
 		letrasCertas = new ArrayList<String>();
 		chances = 6;
+		mensagem = "";
 		
 		palavras = new ArrayList<String>();
 
@@ -91,7 +101,8 @@ public class JogoForcaBean {
 		palavras.add("CASA");
 		palavras.add("FLAMENGO");
 		palavras.add("BRASIL");
-		
+		palavras.add("INBOX");
+		palavras.add("ANGULARJS");
 		
 		dicas = new ArrayList<String>();
 
@@ -103,6 +114,8 @@ public class JogoForcaBean {
 		dicas.add("Lar");
 		dicas.add("Clube de maior torcida do mundo");
 		dicas.add("Nosso país");
+		dicas.add("Novo aplicativo de e-mail da Google");
+		dicas.add("Framework Javascript mantido pela Google");
 		
 		geraPalavra();
 	}
@@ -123,10 +136,18 @@ public class JogoForcaBean {
 	
 	public String getMessagemFimJogo() {
 		if (acertou()) {
-			return "page.forca.msg.acertou";
+			return "page.forca.fim.acerto";
 		}
 		
-		return "page.forca.msg.errou";
+		return "page.forca.fim.erro";
+	}
+	
+	public String getMensagem() {
+		return mensagem;
+	}
+	
+	public boolean hasMensagem() {
+		return !mensagem.isEmpty();
 	}
 	
 	public void geraPalavra() {
