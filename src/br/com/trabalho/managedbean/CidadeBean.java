@@ -66,8 +66,6 @@ public class CidadeBean {
 	public String novaCidade(Estado estado) {
 		this.cidade = new Cidade();
 		this.cidade.setEstado(estado);
-		
-		System.out.println("ESTADO: "+estado.getSigla());
 
 		return "cidade-editar";
 	}

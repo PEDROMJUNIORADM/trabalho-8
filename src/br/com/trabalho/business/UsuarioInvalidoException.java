@@ -7,6 +7,6 @@ public class UsuarioInvalidoException extends Exception {
 	private static final long serialVersionUID = -1071896537277884578L;
 
 	public UsuarioInvalidoException() {
-		super("Login ou senha invalidos!");
+		super("bean.loginBean.usuarioInvalidoException");
 	}
 }
