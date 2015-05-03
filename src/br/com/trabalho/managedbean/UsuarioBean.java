@@ -2,11 +2,10 @@ package br.com.trabalho.managedbean;
 
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
+import javax.faces.FacesMessagesHelper;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
-import javax.faces.context.FacesContext;
 
 import br.com.trabalho.business.UsuarioBusiness;
 import br.com.trabalho.business.UsuarioCadastradoException;
@@ -61,10 +60,7 @@ public class UsuarioBean {
 				usuarioBusiness.alterarUsuario(usuario);
 			return "listar-usuarios.xhtml?faces-redirect=true";
 		} catch (UsuarioCadastradoException e) {
-			FacesMessage message = new FacesMessage();
-			message.setSeverity(FacesMessage.SEVERITY_ERROR);
-			message.setDetail(e.getMessage());
-			FacesContext.getCurrentInstance().addMessage("usuarioForm", message);
+			FacesMessagesHelper.createMessage(e.getMessage(), "usuarioForm");
 			return null;
 		}
 		

@@ -8,6 +8,6 @@ public class PibInvalidoException extends Exception {
 	private static final long serialVersionUID = 8513843675676480854L;
 
 	public PibInvalidoException() {
-		super("Valor do PIB nao pode ser menor que a populacao!");
+		super("bean.estadoBean.pibInalidoException");
 	}
 }
